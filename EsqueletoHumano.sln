@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsqueletoHumano", "EsqueletoHumano\EsqueletoHumano.csproj", "{FDF55357-151F-4130-9F11-BCBC6B00B404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxiliarKinect", "..\RightHand\AuxiliarKinect\AuxiliarKinect.csproj", "{AA7B2123-93B5-4527-BC3A-4F4B15B5F7CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxiliarKinect", "AuxiliarKinect\AuxiliarKinect.csproj", "{AA7B2123-93B5-4527-BC3A-4F4B15B5F7CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

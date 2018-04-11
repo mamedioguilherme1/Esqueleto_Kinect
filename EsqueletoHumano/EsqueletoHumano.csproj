@@ -95,7 +95,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\RightHand\AuxiliarKinect\AuxiliarKinect.csproj">
+    <ProjectReference Include="..\AuxiliarKinect\AuxiliarKinect.csproj">
       <Project>{aa7b2123-93b5-4527-bc3a-4f4b15b5f7cd}</Project>
       <Name>AuxiliarKinect</Name>
     </ProjectReference>

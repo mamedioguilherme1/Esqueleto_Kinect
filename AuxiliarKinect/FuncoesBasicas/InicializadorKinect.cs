@@ -9,7 +9,7 @@ namespace AuxiliarKinect.FuncoesBasicas
 {
     public static class InicializadorKinect
     {
-        //comentário teste
+        //comentário teste 1555
         public static KinectSensor
                 InicializarPrimeiroSensor(int anguloElevacaoInicial)
         {

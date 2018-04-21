@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AuxiliarKinect.FuncoesBasicas;
 using Microsoft.Kinect;
+using Microsoft.Kinect.Toolkit;
+
 
 namespace EsqueletoHumano
 {
@@ -27,14 +29,24 @@ namespace EsqueletoHumano
         public MainWindow()
         {
             InitializeComponent();
-            InicializarKinect();
+            InicializarSeletor();
         }
-        private void InicializarKinect()
+        private void InicializarKinect(KinectSensor kinectSensor)
         {
-            kinect = InicializadorKinect.InicializarPrimeiroSensor(20);
-            kinect.ColorStream.Enable();
+            kinect = kinectSensor;
+            kinect.ColorStream.Enable
+            (ColorImageFormat.RgbResolution640x480Fps30);
             kinect.ColorFrameReady += kinect_ColorFrameReady;
         }
+
+        private void InicializarSeletor()
+        {
+            InicializadorKinect inicializador = new InicializadorKinect();
+            InicializarKinect(inicializador.SeletorKinect.Kinect);
+            inicializador.MetodoInicializadorKinect = InicializarKinect;
+
+        }
+
         private BitmapSource ObterImagemSensorRGB(ColorImageFrame quadro)
         {
             if (quadro == null) return null;

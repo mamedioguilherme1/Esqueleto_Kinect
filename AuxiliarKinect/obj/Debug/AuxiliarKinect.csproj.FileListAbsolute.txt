@@ -16,3 +16,13 @@ E:\IFTM\PROJET KINECT 2018\RightHand\AuxiliarKinect\obj\Debug\AuxiliarKinect.csp
 E:\IFTM\PROJET KINECT 2018\RightHand\AuxiliarKinect\obj\Debug\AuxiliarKinect.csproj.CopyComplete
 E:\IFTM\PROJET KINECT 2018\RightHand\AuxiliarKinect\obj\Debug\AuxiliarKinect.dll
 E:\IFTM\PROJET KINECT 2018\RightHand\AuxiliarKinect\obj\Debug\AuxiliarKinect.pdb
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\bin\Debug\AuxiliarKinect.dll
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\bin\Debug\AuxiliarKinect.pdb
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\bin\Debug\Microsoft.Kinect.dll
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\bin\Debug\Microsoft.Kinect.Toolkit.dll
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\bin\Debug\Microsoft.Kinect.xml
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\obj\Debug\AuxiliarKinect.csprojResolveAssemblyReference.cache
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\obj\Debug\AuxiliarKinect.csproj.CoreCompileInputs.cache
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\obj\Debug\AuxiliarKinect.csproj.CopyComplete
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\obj\Debug\AuxiliarKinect.dll
+E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\AuxiliarKinect\obj\Debug\AuxiliarKinect.pdb

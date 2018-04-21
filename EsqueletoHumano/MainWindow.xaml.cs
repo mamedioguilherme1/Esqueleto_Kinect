@@ -44,7 +44,7 @@ namespace EsqueletoHumano
             InicializadorKinect inicializador = new InicializadorKinect();
             InicializarKinect(inicializador.SeletorKinect.Kinect);
             inicializador.MetodoInicializadorKinect = InicializarKinect;
-            seletorSensorUI.KinectSensorChooser = inicializador.SeletorKinect;
+            seletorSensorUI.KinectSensorChooser = inicializador.SeletorKinect;      
 
         }
 

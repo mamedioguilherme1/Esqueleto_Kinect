@@ -19,3 +19,26 @@ E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\EsqueletoHumano\obj\Debug\EsqueletoHu
 E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\EsqueletoHumano\obj\Debug\EsqueletoHumano.csproj.CopyComplete
 E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\EsqueletoHumano\obj\Debug\EsqueletoHumano.exe
 E:\IFTM\PROJET KINECT 2018\EsqueletoHumano\EsqueletoHumano\obj\Debug\EsqueletoHumano.pdb
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\EsqueletoHumano.exe.config
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\EsqueletoHumano.exe
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\EsqueletoHumano.pdb
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\AuxiliarKinect.dll
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.dll
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.Toolkit.dll
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\AuxiliarKinect.pdb
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.xml
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.csprojResolveAssemblyReference.cache
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\MainWindow.g.cs
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\App.g.cs
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano_MarkupCompile.cache
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano_MarkupCompile.lref
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\MainWindow.baml
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.g.resources
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.Properties.Resources.resources
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.csproj.GenerateResource.cache
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.csproj.CoreCompileInputs.cache
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.csproj.CopyComplete
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.exe
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.pdb
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.Toolkit.Controls.dll
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.Toolkit.Interaction.dll

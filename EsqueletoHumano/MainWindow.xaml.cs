@@ -33,6 +33,7 @@ namespace EsqueletoHumano
             InicializadorKinect inicializador = new InicializadorKinect();
             InicializarKinect(inicializador.SeletorKinect.Kinect);
             inicializador.MetodoInicializadorKinect = InicializarKinect;
+            seletorSensorUI.KinectSensorChooser = inicializador.SeletorKinect;      
 
         }
 
@@ -68,8 +69,5 @@ namespace EsqueletoHumano
             imagemCamera.Source =
             ObterImagemSensorRGB(e.OpenColorImageFrame());
         }
-
-
-
     }
 }

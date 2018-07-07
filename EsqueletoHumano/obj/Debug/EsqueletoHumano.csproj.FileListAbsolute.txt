@@ -27,7 +27,6 @@ D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.dll
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.Toolkit.dll
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\AuxiliarKinect.pdb
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.xml
-D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.csprojResolveAssemblyReference.cache
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\MainWindow.g.cs
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\App.g.cs
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano_MarkupCompile.cache
@@ -42,3 +41,4 @@ D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.exe
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.pdb
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.Toolkit.Controls.dll
 D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\bin\Debug\Microsoft.Kinect.Toolkit.Interaction.dll
+D:\Git Guilherme\Esqueleto_Kinect\EsqueletoHumano\obj\Debug\EsqueletoHumano.csprojAssemblyReference.cache

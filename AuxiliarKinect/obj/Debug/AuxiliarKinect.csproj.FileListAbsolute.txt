@@ -31,8 +31,8 @@ D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\bin\Debug\AuxiliarKinect.pdb
 D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\bin\Debug\Microsoft.Kinect.dll
 D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\bin\Debug\Microsoft.Kinect.Toolkit.dll
 D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\bin\Debug\Microsoft.Kinect.xml
-D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\obj\Debug\AuxiliarKinect.csprojResolveAssemblyReference.cache
 D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\obj\Debug\AuxiliarKinect.csproj.CoreCompileInputs.cache
 D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\obj\Debug\AuxiliarKinect.csproj.CopyComplete
 D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\obj\Debug\AuxiliarKinect.dll
 D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\obj\Debug\AuxiliarKinect.pdb
+D:\Git Guilherme\Esqueleto_Kinect\AuxiliarKinect\obj\Debug\AuxiliarKinect.csprojAssemblyReference.cache

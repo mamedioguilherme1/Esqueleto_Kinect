@@ -10,9 +10,13 @@
         Title="MainWindow" Height="350" Width="525">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="239*"/>
+            <RowDefinition Height="240*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
@@ -21,5 +25,11 @@ HorizontalAlignment="Left" Margin="10,10,0,10" Grid.Row="2"/>
         <k:KinectSensorChooserUI Name="seletorSensorUI"
 HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Image Name="imagemCamera"  Grid.Row = "1"/>
+
+        <Slider Name="slider" Width="20" Orientation="Vertical"
+Minimum="-27" Maximum="27" SmallChange="1" Value="0"
+Height="{Binding ElementName=imagemCamera, Path=ActualHeight}"
+Thumb.DragCompleted="slider_DragCompleted"
+Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Window>

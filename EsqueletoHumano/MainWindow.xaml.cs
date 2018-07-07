@@ -69,5 +69,10 @@ namespace EsqueletoHumano
             imagemCamera.Source =
             ObterImagemSensorRGB(e.OpenColorImageFrame());
         }
+
+        private void slider_DragCompleted(object sender,System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            kinect.ElevationAngle = Convert.ToInt32(slider.Value);
+        }
     }
 }

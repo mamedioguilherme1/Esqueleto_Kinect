@@ -22,14 +22,47 @@ namespace EsqueletoHumano
         }
         private void InicializarKinect(KinectSensor kinectSensor)
         {
+            
             kinect = kinectSensor;
-            kinect.ColorStream.Enable
-            (ColorImageFormat.RgbResolution640x480Fps30);
-            kinect.ColorFrameReady += kinect_ColorFrameReady;
-        }
+            slider.Value = kinect.ElevationAngle;
+            kinect.DepthStream.Enable();
 
+            kinect.DepthFrameReady += kinect_DepthFrameReady;
+           
+            /*ERROOOOO
+                        kinect = kinectSensor;
+                        kinect.ColorStream.Enable
+                        (ColorImageFormat.RgbResolution640x480Fps30);
+                        kinect.ColorFrameReady += kinect_ColorFrameReady;*/
+        }
+        private void kinect_DepthFrameReady (object sender, DepthImageFrameReadyEventArgs e)
+        {
+           
+        }
+        private BitmapSource ReconhecerHumanos (DepthImageFrame quadro)
+        {
+            if (quadro == null) return null;
+            using (quadro)
+            {
+                DepthImagePixel[] imagemProfundidade =
+                new DepthImagePixel[quadro.PixelDataLength];
+                quadro.CopyDepthImagePixelDataTo(imagemProfundidade);
+                byte[] bytesImagem = new byte[imagemProfundidade.Length * 4];
+                for (int indice = 0; indice < bytesImagem.Length; indice += 4)
+                {
+                    if (imagemProfundidade[indice / 4].PlayerIndex != 0)
+                    {
+                        bytesImagem[indice + 1] = 255;
+                    }
+                }
+                return BitmapSource.Create(quadro.Width, quadro.Height,
+                96, 96, PixelFormats.Bgr32, null, bytesImagem,
+                quadro.Width * 4);
+            }
+        }
         private void InicializarSeletor()
         {
+
             InicializadorKinect inicializador = new InicializadorKinect();
             InicializarKinect(inicializador.SeletorKinect.Kinect);
             inicializador.MetodoInicializadorKinect = InicializarKinect;

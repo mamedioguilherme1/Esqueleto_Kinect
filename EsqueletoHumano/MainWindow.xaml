@@ -24,12 +24,12 @@
 HorizontalAlignment="Left" Margin="10,10,0,10" Grid.Row="2"/>
         <k:KinectSensorChooserUI Name="seletorSensorUI"
 HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Image Name="imagemCamera"  Grid.Row = "1"/>
 
         <Slider Name="slider" Width="20" Orientation="Vertical"
 Minimum="-27" Maximum="27" SmallChange="1" Value="0"
 Height="{Binding ElementName=imagemCamera, Path=ActualHeight}"
 Thumb.DragCompleted="slider_DragCompleted"
 Grid.Column="1" Grid.Row="1"/>
+        <Canvas HorizontalAlignment="Left" Height="219" Grid.Row="1" VerticalAlignment="Top" Width="447" Name="canvasKinect" Margin="22,0,0,0"/>
     </Grid>
 </Window>

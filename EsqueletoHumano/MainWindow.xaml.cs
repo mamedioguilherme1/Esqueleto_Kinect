@@ -1,7 +1,10 @@
 ﻿using AuxiliarKinect.FuncoesBasicas;
 using Microsoft.Kinect;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -19,37 +22,22 @@ namespace EsqueletoHumano
         {
             InitializeComponent();
             InicializarSeletor();
+
         }
         private void InicializarKinect(KinectSensor kinectSensor)
         {
-
-
-
             kinect = kinectSensor;
             slider.Value = kinect.ElevationAngle;
             kinect.DepthStream.Enable();
             kinect.SkeletonStream.Enable();
             kinect.ColorStream.Enable();
             kinect.AllFramesReady += kinect_AllFramesReady;
-            /*  slider.Value = kinect.ElevationAngle;
-            kinect.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
-
-            kinect.DepthFrameReady += kinect_DepthFrameReady;
-           
-            /*ERROOOOO
-                        kinect = kinectSensor;
-                        kinect.ColorStream.Enable
-                        (ColorImageFormat.RgbResolution640x480Fps30);
-                        kinect.ColorFrameReady += kinect_ColorFrameReady;*/
+            
         }
-
-
-
-        //------
-
-
+       
         private byte[] ObterImagemSensorRGB(ColorImageFrame quadro)
         {
+            //Método para gerar a imagem rgbd 
             if (quadro == null) return null;
             using (quadro)
             {
@@ -58,54 +46,84 @@ namespace EsqueletoHumano
                 return bytesImagem;
             }
         }
+        //-
         private void kinect_AllFramesReady(object sender, AllFramesReadyEventArgs e)
         {
+            //Método de receber a informação do sensor de profundidade
+           
             byte[] imagem = ObterImagemSensorRGB(e.OpenColorImageFrame());
-            if (chkEscalaCinza.IsChecked.HasValue &&
-            chkEscalaCinza.IsChecked.Value)
+            if (chkEscalaCinza.IsChecked.HasValue && chkEscalaCinza.IsChecked.Value)
                 ReconhecerDistancia(e.OpenDepthImageFrame(), imagem, 2000);
             if (imagem != null)
-                imagemCamera.Source =
-                BitmapSource.Create(kinect.ColorStream.FrameWidth,
-                kinect.ColorStream.FrameHeight,
-                96, 96, PixelFormats.Bgr32, null,
-                imagem,
-                kinect.ColorStream.FrameBytesPerPixel
-                * kinect.ColorStream.FrameWidth);
+                canvasKinect.Background = new ImageBrush(BitmapSource.Create(kinect.ColorStream.FrameWidth, kinect.ColorStream.FrameHeight,96, 96, PixelFormats.Bgr32,
+                    null,imagem,kinect.ColorStream.FrameBytesPerPixel* kinect.ColorStream.FrameWidth));
+            canvasKinect.Children.Clear();
+            DesenharEsqueletoUsuario(e.OpenSkeletonFrame());
+            e.OpenSkeletonFrame();
         }
         private void ReconhecerDistancia(DepthImageFrame quadro, byte[] bytesImagem, int distanciaMaxima)
-        {
-            //if (quadro == null || bytesImagem == null) return null;
+        {   
+            //Método que reconhece a profundidade da imagem
+            if (quadro == null || bytesImagem == null) return;
             using (quadro)
             {
                 DepthImagePixel[] imagemProfundidade =
                 new DepthImagePixel[quadro.PixelDataLength];
                 quadro.CopyDepthImagePixelDataTo(imagemProfundidade);
-                for (int indice = 0;
-                indice < imagemProfundidade.Length;
-                indice++)
+                DepthImagePoint[] pontosImagemProfundidade =
+                new DepthImagePoint[640 * 480];
+                kinect.CoordinateMapper
+                .MapColorFrameToDepthFrame(kinect.ColorStream.Format,
+                kinect.DepthStream.Format, imagemProfundidade,
+                pontosImagemProfundidade);
+                for (int i = 0; i < pontosImagemProfundidade.Length; i++)
                 {
-                    if (imagemProfundidade[indice].Depth < distanciaMaxima)
+                    var point = pontosImagemProfundidade[i];
+                    if (point.Depth < distanciaMaxima &&
+                    KinectSensor.IsKnownPoint(point))
                     {
-                        int indiceImageCores = indice * 4;
+                        var pixelDataIndex = i * 4;
                         byte maiorValorCor =
-                        Math.Max(bytesImagem[indiceImageCores],
-                        Math.Max(bytesImagem[indiceImageCores + 1],
-                        bytesImagem[indiceImageCores + 2]));
-                        bytesImagem[indiceImageCores] = maiorValorCor;
-                        bytesImagem[indiceImageCores + 1] = maiorValorCor;
-                        bytesImagem[indiceImageCores + 2] = maiorValorCor;
+                        Math.Max(bytesImagem[pixelDataIndex],
+                        Math.Max(bytesImagem[pixelDataIndex + 1],
+                        bytesImagem[pixelDataIndex + 2]));
+                        bytesImagem[pixelDataIndex] = maiorValorCor;
+                        bytesImagem[pixelDataIndex + 1] = maiorValorCor;
+                        bytesImagem[pixelDataIndex + 2] = maiorValorCor;
                     }
                 }
             }
         }
-        //---
-        private void kinect_DepthFrameReady(object sender, DepthImageFrameReadyEventArgs e)
+ 
+        private void DesenharEsqueletoUsuario(SkeletonFrame quadro)
         {
-            imagemCamera.Source = ReconhecerHumanos(e.OpenDepthImageFrame());
+            if (quadro == null) return;
+            using (quadro)
+            {
+                Skeleton[] esqueletos =new Skeleton[quadro.SkeletonArrayLength];
+                quadro.CopySkeletonDataTo(esqueletos);
+                IEnumerable<Skeleton> esqueletosRastreados = esqueletos.Where(esqueleto =>
+               esqueleto.TrackingState ==  SkeletonTrackingState.Tracked);
+                Console.WriteLine(esqueletosRastreados.Count());
+                if (esqueletosRastreados.Count() > 0)
+                {
+                    Skeleton esqueleto =
+                    esqueletosRastreados.First();
+                    EsqueletoUsuarioAuxiliar funcoesEsqueletos = new EsqueletoUsuarioAuxiliar(kinect);
+                    funcoesEsqueletos.DesenharArticulacao(esqueleto.Joints[JointType.HandRight], canvasKinect);
+                    funcoesEsqueletos.DesenharArticulacao(esqueleto.Joints[JointType.HandLeft], canvasKinect);
+                }
+            }
         }
+        //--
+        /*    private void kinect_DepthFrameReady(object sender, DepthImageFrameReadyEventArgs e)
+            {
+                //Método que recebe a imagem reconhecendo humanos
+                imagemCamera.Source = ReconhecerHumanos(e.OpenDepthImageFrame());
+            }*/
         private BitmapSource ReconhecerHumanos(DepthImageFrame quadro)
         {
+            //Método para reconhecer humanos
             if (quadro == null) return null;
             using (quadro)
             {
@@ -134,39 +152,6 @@ namespace EsqueletoHumano
 
         }
 
-        /* private BitmapSource ObterImagemSensorRGB(ColorImageFrame quadro)
-         {
-             if (quadro == null) return null;
-             using (quadro)
-             {
-                 byte[] bytesImagem = new byte[quadro.PixelDataLength];
-                 quadro.CopyPixelDataTo(bytesImagem);
-                 if (chkEscalaCinza.IsChecked.HasValue &&
-                 chkEscalaCinza.IsChecked.Value)
-                     for (int indice = 0;
-                     indice < bytesImagem.Length;
-                     indice += quadro.BytesPerPixel)
-                     {
-                         byte maiorValorCor = Math.Max(bytesImagem[indice],
-                         Math.Max(bytesImagem[indice + 1],
-                         bytesImagem[indice + 2]));
-                         bytesImagem[indice] = maiorValorCor;
-                         bytesImagem[indice + 1] = maiorValorCor;
-                         bytesImagem[indice + 2] = maiorValorCor;
-                     }
-                 return BitmapSource.Create(quadro.Width, quadro.Height,
-                 96, 96, PixelFormats.Bgr32, null, bytesImagem,
-                 quadro.Width * quadro.BytesPerPixel);
-             }
-
-    }*/
-    /* private void kinect_ColorFrameReady(object sender,
-     ColorImageFrameReadyEventArgs e)
-     {
-         imagemCamera.Source = ObterImagemSensorRGB(e.OpenColorImageFrame());
-     }
-
-     */
     private void slider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
     {
         kinect.ElevationAngle = Convert.ToInt32(slider.Value);

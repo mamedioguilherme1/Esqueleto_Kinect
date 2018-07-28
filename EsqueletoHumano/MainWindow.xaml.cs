@@ -1,4 +1,5 @@
 ﻿using AuxiliarKinect.FuncoesBasicas;
+using EsqueletoHumano.Auxiliar;
 using Microsoft.Kinect;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace EsqueletoHumano
         }
         private void InicializarKinect(KinectSensor kinectSensor)
         {
+            //Método de inicialização do kinect
             kinect = kinectSensor;
             slider.Value = kinect.ElevationAngle;
             kinect.DepthStream.Enable();
@@ -94,33 +96,13 @@ namespace EsqueletoHumano
                 }
             }
         }
- 
+
         private void DesenharEsqueletoUsuario(SkeletonFrame quadro)
         {
             if (quadro == null) return;
             using (quadro)
-            {
-                Skeleton[] esqueletos =new Skeleton[quadro.SkeletonArrayLength];
-                quadro.CopySkeletonDataTo(esqueletos);
-                IEnumerable<Skeleton> esqueletosRastreados = esqueletos.Where(esqueleto =>
-               esqueleto.TrackingState ==  SkeletonTrackingState.Tracked);
-                Console.WriteLine(esqueletosRastreados.Count());
-                if (esqueletosRastreados.Count() > 0)
-                {
-                    Skeleton esqueleto =
-                    esqueletosRastreados.First();
-                    EsqueletoUsuarioAuxiliar funcoesEsqueletos = new EsqueletoUsuarioAuxiliar(kinect);
-                    funcoesEsqueletos.DesenharArticulacao(esqueleto.Joints[JointType.HandRight], canvasKinect);
-                    funcoesEsqueletos.DesenharArticulacao(esqueleto.Joints[JointType.HandLeft], canvasKinect);
-                }
-            }
+                quadro.DesenharEsqueletoUsuario(kinect, canvasKinect);
         }
-        //--
-        /*    private void kinect_DepthFrameReady(object sender, DepthImageFrameReadyEventArgs e)
-            {
-                //Método que recebe a imagem reconhecendo humanos
-                imagemCamera.Source = ReconhecerHumanos(e.OpenDepthImageFrame());
-            }*/
         private BitmapSource ReconhecerHumanos(DepthImageFrame quadro)
         {
             //Método para reconhecer humanos

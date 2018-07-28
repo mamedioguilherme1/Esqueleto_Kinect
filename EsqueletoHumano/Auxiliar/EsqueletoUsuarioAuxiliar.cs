@@ -54,5 +54,30 @@ namespace EsqueletoHumano
                 canvasParaDesenhar.Children.Add(objetoArticulacao);
             }
         }
+
+        private Line CriarComponenteVisualOsso (int larguraDesenho, Brush corDesenho, double origemX, double origemY, double destinoX, double destinoY)
+        {
+            Line objetoOsso = new Line();
+            objetoOsso.StrokeThickness = larguraDesenho;
+            objetoOsso.Stroke = corDesenho;
+            objetoOsso.X1 = origemX;
+            objetoOsso.X2 = destinoX;
+            objetoOsso.Y1 = origemY;
+            objetoOsso.Y2 = destinoY;
+            return objetoOsso;
+        }
+
+        public void DesenharOsso
+(Joint articulacaoOrigem, Joint articulacaoDestino,
+Canvas canvasParaDesenhar)
+        {
+            int larguraDesenho = 4;
+            Brush corDesenho = Brushes.Green;
+            ColorImagePoint posicaoArticulacaoOrigem = ConverterCoordenadasArticulacao(articulacaoOrigem,canvasParaDesenhar.ActualWidth,canvasParaDesenhar.ActualHeight);
+            ColorImagePoint posicaoArticulacaoDestino = ConverterCoordenadasArticulacao(articulacaoDestino,canvasParaDesenhar.ActualWidth, canvasParaDesenhar.ActualHeight);
+            Line objetoOsso = CriarComponenteVisualOsso(larguraDesenho, corDesenho, posicaoArticulacaoOrigem.X, posicaoArticulacaoOrigem.Y, posicaoArticulacaoDestino.X, posicaoArticulacaoDestino.Y);
+            if (Math.Max(objetoOsso.X1, objetoOsso.X2) < canvasParaDesenhar.ActualWidth && Math.Min(objetoOsso.X1, objetoOsso.X2) > 0 && Math.Max(objetoOsso.Y1, objetoOsso.Y2) < canvasParaDesenhar.ActualHeight && Math.Min(objetoOsso.Y1, objetoOsso.Y2) > 0)
+                canvasParaDesenhar.Children.Add(objetoOsso);
+        }
     }
 }
